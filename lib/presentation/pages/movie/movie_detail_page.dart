@@ -178,7 +178,9 @@ class DetailContent extends StatelessWidget {
                               style: kHeading6,
                             ),
                             Text(
-                              movie.overview,
+                              movie.overview.isNotEmpty
+                                  ? movie.overview
+                                  : 'No overview available',
                             ),
                             SizedBox(height: 16),
                             Text(

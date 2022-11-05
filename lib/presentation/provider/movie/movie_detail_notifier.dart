@@ -65,9 +65,9 @@ class MovieDetailNotifier extends ChangeNotifier {
             _recommendationState = RequestState.Error;
             _message = failure.message;
           },
-          (movies) {
+          (recommendations) {
             _recommendationState = RequestState.Loaded;
-            _movieRecommendations = movies;
+            _movieRecommendations = recommendations;
           },
         );
         _movieState = RequestState.Loaded;

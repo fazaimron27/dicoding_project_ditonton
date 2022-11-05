@@ -42,7 +42,7 @@ class MovieCard extends StatelessWidget {
                     ),
                     SizedBox(height: 16),
                     Text(
-                      movie.overview ?? '-',
+                      movie.overview!.isNotEmpty ? movie.overview! : '-',
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
