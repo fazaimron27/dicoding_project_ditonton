@@ -212,6 +212,66 @@ class DetailContent extends StatelessWidget {
                             ),
                             SizedBox(height: 16),
                             Text(
+                              'Seasons',
+                              style: kHeading6,
+                            ),
+                            Container(
+                              height: 200,
+                              child: ListView.builder(
+                                scrollDirection: Axis.horizontal,
+                                itemCount: tv.seasons.length,
+                                itemBuilder: (context, index) {
+                                  final season = tv.seasons[index];
+                                  return Container(
+                                    margin: const EdgeInsets.only(right: 8),
+                                    child: Column(
+                                      children: [
+                                        InkWell(
+                                          onTap: () {},
+                                          borderRadius: BorderRadius.all(
+                                            Radius.circular(8),
+                                          ),
+                                          child: ClipRRect(
+                                            borderRadius: BorderRadius.all(
+                                              Radius.circular(8),
+                                            ),
+                                            child: CachedNetworkImage(
+                                              imageUrl: season.posterPath !=
+                                                      null
+                                                  ? 'https://image.tmdb.org/t/p/w500${season.posterPath}'
+                                                  : 'https://image.tmdb.org/t/p/w500${tv.posterPath}',
+                                              width: 100,
+                                              height: 150,
+                                              placeholder: (context, url) =>
+                                                  Center(
+                                                child:
+                                                    CircularProgressIndicator(),
+                                              ),
+                                              errorWidget:
+                                                  (context, url, error) =>
+                                                      Icon(Icons.error),
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(height: 4),
+                                        Text(
+                                          season.name.length > 10
+                                              ? season.name.substring(0, 10) +
+                                                  '...'
+                                              : season.name,
+                                          style: kBodyText.copyWith(
+                                            color: kSubtitle.color,
+                                            overflow: TextOverflow.ellipsis,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                },
+                              ),
+                            ),
+                            SizedBox(height: 16),
+                            Text(
                               'Recommendations',
                               style: kHeading6,
                             ),
