@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:ditonton/domain/entities/tv/tv.dart';
 import 'package:ditonton/domain/entities/tv/tv_detail.dart';
+import 'package:ditonton/domain/entities/tv/tv_season_detail.dart';
 import 'package:ditonton/common/failure.dart';
 
 abstract class TvRepository {
@@ -14,4 +15,6 @@ abstract class TvRepository {
   Future<Either<Failure, String>> removeWatchlist(TvDetail tv);
   Future<bool> isAddedToWatchlist(int id);
   Future<Either<Failure, List<Tv>>> getWatchlistTv();
+  Future<Either<Failure, TvSeasonDetail>> getTvShowSeasonDetail(
+      int id, int seasonNumber);
 }
