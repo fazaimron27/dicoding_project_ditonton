@@ -51,7 +51,10 @@ class _TvSeasonDetailPageState extends State<TvSeasonDetailPage> {
               ),
             );
           } else {
-            return Text(provider.message);
+            return Center(
+              key: Key('error_message'),
+              child: Text(provider.message),
+            );
           }
         },
       ),
