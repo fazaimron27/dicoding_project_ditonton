@@ -219,6 +219,7 @@ class DetailContent extends StatelessWidget {
                             Container(
                               height: 200,
                               child: ListView.builder(
+                                key: Key('seasonsListView'),
                                 scrollDirection: Axis.horizontal,
                                 itemCount: tv.seasons.length,
                                 itemBuilder: (context, index) {
@@ -300,6 +301,7 @@ class DetailContent extends StatelessWidget {
                                   return Container(
                                     height: 150,
                                     child: ListView.builder(
+                                      key: Key('recommendationListView'),
                                       scrollDirection: Axis.horizontal,
                                       itemBuilder: (context, index) {
                                         final tv = recommendations[index];
