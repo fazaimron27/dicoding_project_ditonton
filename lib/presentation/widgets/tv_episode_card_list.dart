@@ -13,7 +13,6 @@ class TvEpisodeCard extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 4),
       child: InkWell(
-        onTap: () {},
         child: Stack(
           alignment: Alignment.bottomLeft,
           children: [
