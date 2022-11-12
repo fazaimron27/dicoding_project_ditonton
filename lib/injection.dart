@@ -56,6 +56,7 @@ import 'package:ditonton/domain/usecases/tv/get_tv_season_detail.dart';
 import 'package:ditonton/presentation/provider/movie/movie_detail_notifier.dart';
 import 'package:ditonton/presentation/provider/movie/movie_list_notifier.dart';
 import 'package:ditonton/presentation/provider/movie/movie_search_notifier.dart';
+import 'package:ditonton/presentation/provider/movie/now_playing_movies_notifier.dart';
 import 'package:ditonton/presentation/provider/movie/popular_movies_notifier.dart';
 import 'package:ditonton/presentation/provider/movie/top_rated_movies_notifier.dart';
 import 'package:ditonton/presentation/provider/movie/watchlist_movie_notifier.dart';
@@ -64,6 +65,7 @@ import 'package:ditonton/presentation/provider/movie/watchlist_movie_notifier.da
 import 'package:ditonton/presentation/provider/tv/tv_detail_notifier.dart';
 import 'package:ditonton/presentation/provider/tv/tv_list_notifier.dart';
 import 'package:ditonton/presentation/provider/tv/tv_search_notifier.dart';
+import 'package:ditonton/presentation/provider/tv/on_the_air_tv_notifier.dart';
 import 'package:ditonton/presentation/provider/tv/popular_tv_notifier.dart';
 import 'package:ditonton/presentation/provider/tv/top_rated_tv_notifier.dart';
 import 'package:ditonton/presentation/provider/tv/watchlist_tv_notifier.dart';
@@ -96,6 +98,11 @@ void init() {
   locator.registerFactory(
     () => MovieSearchNotifier(
       searchMovies: locator(),
+    ),
+  );
+  locator.registerFactory(
+    () => NowPlayingMoviesNotifier(
+      locator(),
     ),
   );
   locator.registerFactory(
@@ -134,6 +141,11 @@ void init() {
   locator.registerFactory(
     () => TvSearchNotifier(
       searchTv: locator(),
+    ),
+  );
+  locator.registerFactory(
+    () => OnTheAirTvNotifier(
+      locator(),
     ),
   );
   locator.registerFactory(
