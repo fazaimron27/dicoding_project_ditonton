@@ -44,16 +44,22 @@ class SearchPage extends StatelessWidget {
                   );
                 } else if (data.state == RequestState.Loaded) {
                   final result = data.searchResult;
-                  return Expanded(
-                    child: ListView.builder(
-                      padding: const EdgeInsets.all(8),
-                      itemBuilder: (context, index) {
-                        final tv = data.searchResult[index];
-                        return TvCard(tv);
-                      },
-                      itemCount: result.length,
-                    ),
-                  );
+                  if (result.isEmpty) {
+                    return Center(
+                      child: Text('No Result Found'),
+                    );
+                  } else {
+                    return Expanded(
+                      child: ListView.builder(
+                        padding: const EdgeInsets.all(8),
+                        itemBuilder: (context, index) {
+                          final tv = data.searchResult[index];
+                          return TvCard(tv);
+                        },
+                        itemCount: result.length,
+                      ),
+                    );
+                  }
                 } else {
                   return Expanded(
                     child: Container(),
