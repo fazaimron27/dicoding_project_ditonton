@@ -46,13 +46,19 @@ class _WatchlistTvPageState extends State<WatchlistTvPage> with RouteAware {
                 child: CircularProgressIndicator(),
               );
             } else if (data.watchlistState == RequestState.Loaded) {
-              return ListView.builder(
-                itemBuilder: (context, index) {
-                  final tv = data.watchlistTv[index];
-                  return TvCard(tv);
-                },
-                itemCount: data.watchlistTv.length,
-              );
+              if (data.watchlistTv.isEmpty) {
+                return Center(
+                  child: Text('No Watchlist Added'),
+                );
+              } else {
+                return ListView.builder(
+                  itemBuilder: (context, index) {
+                    final tv = data.watchlistTv[index];
+                    return TvCard(tv);
+                  },
+                  itemCount: data.watchlistTv.length,
+                );
+              }
             } else {
               return Center(
                 key: Key('error_message'),

@@ -48,13 +48,19 @@ class _WatchlistMoviesPageState extends State<WatchlistMoviesPage>
                 child: CircularProgressIndicator(),
               );
             } else if (data.watchlistState == RequestState.Loaded) {
-              return ListView.builder(
-                itemBuilder: (context, index) {
-                  final movie = data.watchlistMovies[index];
-                  return MovieCard(movie);
-                },
-                itemCount: data.watchlistMovies.length,
-              );
+              if (data.watchlistMovies.isEmpty) {
+                return Center(
+                  child: Text('No Watchlist Added'),
+                );
+              } else {
+                return ListView.builder(
+                  itemBuilder: (context, index) {
+                    final movie = data.watchlistMovies[index];
+                    return MovieCard(movie);
+                  },
+                  itemCount: data.watchlistMovies.length,
+                );
+              }
             } else {
               return Center(
                 key: Key('error_message'),
