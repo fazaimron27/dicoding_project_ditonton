@@ -34,6 +34,7 @@ dependencies:
   path_provider: ^2.0.2
   provider: ^6.0.3
   sqflite: ^2.0.0+3
+  flutter_bloc: ^8.1.1
 
   about:
     path: about
