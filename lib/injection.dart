@@ -70,6 +70,8 @@ import 'package:core/presentation/provider/tv/tv_season_detail_notifier.dart';
 // Search Module
 import 'package:search/search.dart';
 
+import 'package:search/presentation/bloc/search_bloc.dart';
+
 import 'package:http/http.dart' as http;
 import 'package:get_it/get_it.dart';
 
@@ -165,6 +167,18 @@ void init() {
   locator.registerFactory(
     () => TvSeasonDetailNotifier(
       getTvSeasonDetail: locator(),
+    ),
+  );
+
+  /// bloc
+  locator.registerFactory(
+    () => SearchMovieBloc(
+      locator(),
+    ),
+  );
+  locator.registerFactory(
+    () => SearchTvBloc(
+      locator(),
     ),
   );
 
