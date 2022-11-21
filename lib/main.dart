@@ -41,8 +41,12 @@ import 'package:core/presentation/provider/tv/top_rated_tv_notifier.dart';
 import 'package:core/presentation/provider/tv/watchlist_tv_notifier.dart';
 import 'package:core/presentation/provider/tv/tv_season_detail_notifier.dart';
 
-// Search Module
+/// Search Module
 import 'package:search/search.dart';
+
+/// Bloc
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:search/presentation/bloc/search_bloc.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -68,6 +72,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => di.locator<MovieSearchNotifier>(),
         ),
+        BlocProvider(
+          create: (_) => di.locator<SearchMovieBloc>(),
+        ),
         ChangeNotifierProvider(
           create: (_) => di.locator<NowPlayingMoviesNotifier>(),
         ),
@@ -88,6 +95,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (_) => di.locator<TvSearchNotifier>(),
+        ),
+        BlocProvider(
+          create: (_) => di.locator<SearchTvBloc>(),
         ),
         ChangeNotifierProvider(
           create: (_) => di.locator<OnTheAirTvNotifier>(),
