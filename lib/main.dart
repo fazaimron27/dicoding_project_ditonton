@@ -1,61 +1,27 @@
-import 'package:core/styles/colors.dart';
-import 'package:core/styles/text_styles.dart';
-import 'package:core/utils/utils.dart';
-import 'package:core/utils/routes.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ditonton/injection.dart' as di;
 
-/// Pages
+/// Core Module
+import 'package:core/core.dart';
+
+/// About Module
 import 'package:about/about.dart';
-
-/// Movie
-import 'package:movie/presentation/pages/movie_detail_page.dart';
-import 'package:movie/presentation/pages/home_movie_page.dart';
-import 'package:movie/presentation/pages/now_playing_movies_page.dart';
-import 'package:movie/presentation/pages/popular_movies_page.dart';
-import 'package:movie/presentation/pages/top_rated_movies_page.dart';
-import 'package:movie/presentation/pages/watchlist_movies_page.dart';
-
-/// TV Show
-import 'package:tv/presentation/pages/tv_detail_page.dart';
-import 'package:tv/presentation/pages/home_tv_page.dart';
-import 'package:tv/presentation/pages/on_the_air_tv_page.dart';
-import 'package:tv/presentation/pages/popular_tv_page.dart';
-import 'package:tv/presentation/pages/top_rated_tv_page.dart';
-import 'package:tv/presentation/pages/watchlist_tv_page.dart';
-import 'package:tv/presentation/pages/tv_season_detail_page.dart';
-
-/// Provider
-/// Movie
-import 'package:movie/presentation/provider/movie_detail_notifier.dart';
-import 'package:movie/presentation/provider/movie_list_notifier.dart';
-import 'package:movie/presentation/provider/now_playing_movies_notifier.dart';
-import 'package:movie/presentation/provider/popular_movies_notifier.dart';
-import 'package:movie/presentation/provider/top_rated_movies_notifier.dart';
-import 'package:movie/presentation/provider/watchlist_movie_notifier.dart';
-
-/// TV Show
-import 'package:tv/presentation/provider/tv_detail_notifier.dart';
-import 'package:tv/presentation/provider/tv_list_notifier.dart';
-import 'package:tv/presentation/provider/on_the_air_tv_notifier.dart';
-import 'package:tv/presentation/provider/popular_tv_notifier.dart';
-import 'package:tv/presentation/provider/top_rated_tv_notifier.dart';
-import 'package:tv/presentation/provider/watchlist_tv_notifier.dart';
-import 'package:tv/presentation/provider/tv_season_detail_notifier.dart';
 
 /// Search Module
 import 'package:search/search.dart';
 
-/// Bloc
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:search/presentation/bloc/search_bloc.dart';
+/// Movie Module
+import 'package:movie/movie.dart';
+
+/// TV Show Module
+import 'package:tv/tv.dart';
 
 /// Firebase
 import 'package:ditonton/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
-
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:ditonton/injection.dart' as di;
 
 void main() async {
   di.init();
@@ -78,12 +44,6 @@ class MyApp extends StatelessWidget {
           create: (_) => di.locator<MovieDetailNotifier>(),
         ),
         ChangeNotifierProvider(
-          create: (_) => di.locator<MovieSearchNotifier>(),
-        ),
-        BlocProvider(
-          create: (_) => di.locator<SearchMovieBloc>(),
-        ),
-        ChangeNotifierProvider(
           create: (_) => di.locator<NowPlayingMoviesNotifier>(),
         ),
         ChangeNotifierProvider(
@@ -102,12 +62,6 @@ class MyApp extends StatelessWidget {
           create: (_) => di.locator<TvDetailNotifier>(),
         ),
         ChangeNotifierProvider(
-          create: (_) => di.locator<TvSearchNotifier>(),
-        ),
-        BlocProvider(
-          create: (_) => di.locator<SearchTvBloc>(),
-        ),
-        ChangeNotifierProvider(
           create: (_) => di.locator<OnTheAirTvNotifier>(),
         ),
         ChangeNotifierProvider(
@@ -121,6 +75,14 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (_) => di.locator<TvSeasonDetailNotifier>(),
+        ),
+
+        /// Search Module
+        BlocProvider(
+          create: (_) => di.locator<SearchMovieBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => di.locator<SearchTvBloc>(),
         ),
       ],
       child: MaterialApp(
