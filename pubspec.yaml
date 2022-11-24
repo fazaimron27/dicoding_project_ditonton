@@ -46,6 +46,10 @@ dependencies:
     path: core
   search:
     path: search
+  movie:
+    path: movie
+  tv:
+    path: tv
 
 dev_dependencies:
   build_runner: ^2.0.4

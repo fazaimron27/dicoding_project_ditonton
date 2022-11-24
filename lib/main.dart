@@ -7,39 +7,39 @@ import 'package:core/utils/routes.dart';
 import 'package:about/about.dart';
 
 /// Movie
-import 'package:core/presentation/pages/movie/movie_detail_page.dart';
-import 'package:core/presentation/pages/movie/home_movie_page.dart';
-import 'package:core/presentation/pages/movie/now_playing_movies_page.dart';
-import 'package:core/presentation/pages/movie/popular_movies_page.dart';
-import 'package:core/presentation/pages/movie/top_rated_movies_page.dart';
-import 'package:core/presentation/pages/movie/watchlist_movies_page.dart';
+import 'package:movie/presentation/pages/movie_detail_page.dart';
+import 'package:movie/presentation/pages/home_movie_page.dart';
+import 'package:movie/presentation/pages/now_playing_movies_page.dart';
+import 'package:movie/presentation/pages/popular_movies_page.dart';
+import 'package:movie/presentation/pages/top_rated_movies_page.dart';
+import 'package:movie/presentation/pages/watchlist_movies_page.dart';
 
 /// TV Show
-import 'package:core/presentation/pages/tv/tv_detail_page.dart';
-import 'package:core/presentation/pages/tv/home_tv_page.dart';
-import 'package:core/presentation/pages/tv/on_the_air_tv_page.dart';
-import 'package:core/presentation/pages/tv/popular_tv_page.dart';
-import 'package:core/presentation/pages/tv/top_rated_tv_page.dart';
-import 'package:core/presentation/pages/tv/watchlist_tv_page.dart';
-import 'package:core/presentation/pages/tv/tv_season_detail_page.dart';
+import 'package:tv/presentation/pages/tv_detail_page.dart';
+import 'package:tv/presentation/pages/home_tv_page.dart';
+import 'package:tv/presentation/pages/on_the_air_tv_page.dart';
+import 'package:tv/presentation/pages/popular_tv_page.dart';
+import 'package:tv/presentation/pages/top_rated_tv_page.dart';
+import 'package:tv/presentation/pages/watchlist_tv_page.dart';
+import 'package:tv/presentation/pages/tv_season_detail_page.dart';
 
 /// Provider
 /// Movie
-import 'package:core/presentation/provider/movie/movie_detail_notifier.dart';
-import 'package:core/presentation/provider/movie/movie_list_notifier.dart';
-import 'package:core/presentation/provider/movie/now_playing_movies_notifier.dart';
-import 'package:core/presentation/provider/movie/popular_movies_notifier.dart';
-import 'package:core/presentation/provider/movie/top_rated_movies_notifier.dart';
-import 'package:core/presentation/provider/movie/watchlist_movie_notifier.dart';
+import 'package:movie/presentation/provider/movie_detail_notifier.dart';
+import 'package:movie/presentation/provider/movie_list_notifier.dart';
+import 'package:movie/presentation/provider/now_playing_movies_notifier.dart';
+import 'package:movie/presentation/provider/popular_movies_notifier.dart';
+import 'package:movie/presentation/provider/top_rated_movies_notifier.dart';
+import 'package:movie/presentation/provider/watchlist_movie_notifier.dart';
 
 /// TV Show
-import 'package:core/presentation/provider/tv/tv_detail_notifier.dart';
-import 'package:core/presentation/provider/tv/tv_list_notifier.dart';
-import 'package:core/presentation/provider/tv/on_the_air_tv_notifier.dart';
-import 'package:core/presentation/provider/tv/popular_tv_notifier.dart';
-import 'package:core/presentation/provider/tv/top_rated_tv_notifier.dart';
-import 'package:core/presentation/provider/tv/watchlist_tv_notifier.dart';
-import 'package:core/presentation/provider/tv/tv_season_detail_notifier.dart';
+import 'package:tv/presentation/provider/tv_detail_notifier.dart';
+import 'package:tv/presentation/provider/tv_list_notifier.dart';
+import 'package:tv/presentation/provider/on_the_air_tv_notifier.dart';
+import 'package:tv/presentation/provider/popular_tv_notifier.dart';
+import 'package:tv/presentation/provider/top_rated_tv_notifier.dart';
+import 'package:tv/presentation/provider/watchlist_tv_notifier.dart';
+import 'package:tv/presentation/provider/tv_season_detail_notifier.dart';
 
 /// Search Module
 import 'package:search/search.dart';

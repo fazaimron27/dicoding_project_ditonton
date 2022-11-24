@@ -8,31 +8,29 @@ import 'dart:convert' as _i26;
 import 'dart:typed_data' as _i27;
 
 import 'package:core/data/datasources/db/database_helper.dart' as _i24;
-import 'package:core/data/datasources/movie/movie_local_data_source.dart'
-    as _i14;
-import 'package:core/data/datasources/movie/movie_remote_data_source.dart'
-    as _i12;
-import 'package:core/data/datasources/tv/tv_local_data_source.dart' as _i22;
-import 'package:core/data/datasources/tv/tv_remote_data_source.dart' as _i20;
-import 'package:core/data/models/movie/movie_detail_model.dart' as _i3;
-import 'package:core/data/models/movie/movie_model.dart' as _i13;
-import 'package:core/data/models/movie/movie_table.dart' as _i15;
-import 'package:core/data/models/tv/tv_detail_model.dart' as _i4;
-import 'package:core/data/models/tv/tv_model.dart' as _i21;
-import 'package:core/data/models/tv/tv_season_detail_model.dart' as _i5;
-import 'package:core/data/models/tv/tv_table.dart' as _i23;
-import 'package:core/domain/entities/movie/movie.dart' as _i10;
-import 'package:core/domain/entities/movie/movie_detail.dart' as _i11;
-import 'package:core/domain/entities/tv/tv.dart' as _i17;
-import 'package:core/domain/entities/tv/tv_detail.dart' as _i18;
-import 'package:core/domain/entities/tv/tv_season_detail.dart' as _i19;
-import 'package:core/domain/repositories/movie_repository.dart' as _i7;
-import 'package:core/domain/repositories/tv_repository.dart' as _i16;
 import 'package:core/utils/failure.dart' as _i9;
 import 'package:dartz/dartz.dart' as _i2;
 import 'package:http/http.dart' as _i6;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:sqflite/sqflite.dart' as _i25;
+import 'package:movie/data/datasources/movie_local_data_source.dart' as _i14;
+import 'package:movie/data/datasources/movie_remote_data_source.dart' as _i12;
+import 'package:movie/data/models/movie_detail_model.dart' as _i3;
+import 'package:movie/data/models/movie_model.dart' as _i13;
+import 'package:movie/data/models/movie_table.dart' as _i15;
+import 'package:movie/domain/entities/movie.dart' as _i10;
+import 'package:movie/domain/entities/movie_detail.dart' as _i11;
+import 'package:movie/domain/repositories/movie_repository.dart' as _i7;
+import 'package:sqflite_sqlcipher/sqflite.dart' as _i25;
+import 'package:tv/data/datasources/tv_local_data_source.dart' as _i22;
+import 'package:tv/data/datasources/tv_remote_data_source.dart' as _i20;
+import 'package:tv/data/models/tv_detail_model.dart' as _i4;
+import 'package:tv/data/models/tv_model.dart' as _i21;
+import 'package:tv/data/models/tv_season_detail_model.dart' as _i5;
+import 'package:tv/data/models/tv_table.dart' as _i23;
+import 'package:tv/domain/entities/tv.dart' as _i17;
+import 'package:tv/domain/entities/tv_detail.dart' as _i18;
+import 'package:tv/domain/entities/tv_season_detail.dart' as _i19;
+import 'package:tv/domain/repositories/tv_repository.dart' as _i16;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values

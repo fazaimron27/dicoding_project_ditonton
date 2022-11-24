@@ -1,5 +1,5 @@
-import 'package:core/domain/entities/movie/movie.dart';
-import 'package:core/domain/entities/tv/tv.dart';
+import 'package:movie/domain/entities/movie.dart';
+import 'package:tv/domain/entities/tv.dart';
 import 'package:search/domain/usecases/search_movies.dart';
 import 'package:search/domain/usecases/search_tv.dart';
 import 'package:bloc/bloc.dart';

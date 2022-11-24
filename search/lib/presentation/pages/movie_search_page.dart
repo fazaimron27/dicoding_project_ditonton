@@ -1,5 +1,5 @@
 import 'package:core/styles/text_styles.dart';
-import 'package:core/presentation/widgets/movie_card_list.dart';
+import 'package:movie/presentation/widgets/movie_card_list.dart';
 import '../bloc/search_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
