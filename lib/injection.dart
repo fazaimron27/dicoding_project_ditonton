@@ -34,44 +34,6 @@ final locator = GetIt.instance;
 
 void init() {
   /// provider
-  /// Movie
-  locator.registerFactory(
-    () => MovieListNotifier(
-      getNowPlayingMovies: locator(),
-      getPopularMovies: locator(),
-      getTopRatedMovies: locator(),
-    ),
-  );
-  locator.registerFactory(
-    () => MovieDetailNotifier(
-      getMovieDetail: locator(),
-      getMovieRecommendations: locator(),
-      getWatchListStatus: locator(),
-      saveWatchlist: locator(),
-      removeWatchlist: locator(),
-    ),
-  );
-  locator.registerFactory(
-    () => NowPlayingMoviesNotifier(
-      locator(),
-    ),
-  );
-  locator.registerFactory(
-    () => PopularMoviesNotifier(
-      locator(),
-    ),
-  );
-  locator.registerFactory(
-    () => TopRatedMoviesNotifier(
-      getTopRatedMovies: locator(),
-    ),
-  );
-  locator.registerFactory(
-    () => WatchlistMovieNotifier(
-      getWatchlistMovies: locator(),
-    ),
-  );
-
   /// TV Show
   locator.registerFactory(
     () => TvListNotifier(
@@ -115,7 +77,7 @@ void init() {
     ),
   );
 
-  /// bloc
+  /// Search Bloc
   locator.registerFactory(
     () => SearchMovieBloc(
       locator(),
@@ -123,6 +85,41 @@ void init() {
   );
   locator.registerFactory(
     () => SearchTvBloc(
+      locator(),
+    ),
+  );
+
+  /// Movie Bloc
+  locator.registerFactory(
+    () => NowPlayingMoviesBloc(
+      locator(),
+    ),
+  );
+  locator.registerFactory(
+    () => PopularMoviesBloc(
+      locator(),
+    ),
+  );
+  locator.registerFactory(
+    () => TopRatedMoviesBloc(
+      locator(),
+    ),
+  );
+  locator.registerFactory(
+    () => MovieDetailBloc(
+      locator(),
+    ),
+  );
+  locator.registerFactory(
+    () => MovieRecommendationsBloc(
+      locator(),
+    ),
+  );
+  locator.registerFactory(
+    () => MovieWatchlistBloc(
+      locator(),
+      locator(),
+      locator(),
       locator(),
     ),
   );
@@ -136,7 +133,7 @@ void init() {
   locator.registerLazySingleton(() => GetMovieRecommendations(locator()));
   locator.registerLazySingleton(() => SearchMovies(locator()));
   locator.registerLazySingleton(
-      () => watchlist_status_movie.GetWatchListStatus(locator()));
+      () => watchlist_status_movie.GetWatchlistStatus(locator()));
   locator.registerLazySingleton(
       () => save_watchlist_movie.SaveWatchlist(locator()));
   locator.registerLazySingleton(
