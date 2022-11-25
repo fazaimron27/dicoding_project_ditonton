@@ -4,7 +4,7 @@ import 'package:search/domain/usecases/search_tv.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
-import '../../../../core/test/helpers/test_helper.mocks.dart';
+import '../../../../tv/test/helpers/test_helper.mocks.dart';
 
 void main() {
   late SearchTv usecase;
