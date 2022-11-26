@@ -1,28 +1,26 @@
-import 'package:core/utils/state_enum.dart';
-import 'package:tv/domain/entities/tv.dart';
+import 'package:tv/presentation/bloc/tv_bloc.dart';
 import 'package:tv/presentation/pages/watchlist_tv_page.dart';
-import 'package:tv/presentation/provider/watchlist_tv_notifier.dart';
 import 'package:tv/presentation/widgets/tv_card_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/annotations.dart';
-import 'package:mockito/mockito.dart';
-import 'package:provider/provider.dart';
+import 'package:mocktail/mocktail.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../dummy_data/dummy_objects.dart';
-import 'watchlist_tv_page_test.mocks.dart';
+import '../../helpers/bloc_test_helper.dart';
 
-@GenerateMocks([WatchlistTvNotifier])
 void main() {
-  late MockWatchlistTvNotifier mockNotifier;
+  late MockTvWatchlistBloc mockTvWatchlistBloc;
 
   setUp(() {
-    mockNotifier = MockWatchlistTvNotifier();
+    mockTvWatchlistBloc = MockTvWatchlistBloc();
+    registerFallbackValue(TvFakeEvent());
+    registerFallbackValue(TvFakeState());
   });
 
   Widget _makeTestableWidget(Widget body) {
-    return ChangeNotifierProvider<WatchlistTvNotifier>.value(
-      value: mockNotifier,
+    return BlocProvider<TvWatchlistBloc>.value(
+      value: mockTvWatchlistBloc,
       child: MaterialApp(
         home: body,
       ),
@@ -31,7 +29,7 @@ void main() {
 
   testWidgets('Page should display center progress bar when loading',
       (WidgetTester tester) async {
-    when(mockNotifier.watchlistState).thenReturn(RequestState.loading);
+    when(() => mockTvWatchlistBloc.state).thenReturn(TvLoading());
 
     final progressBarFinder = find.byType(CircularProgressIndicator);
     final centerFinder = find.byType(Center);
@@ -56,8 +54,7 @@ void main() {
 
   testWidgets('Page should display TvCard when data is loaded',
       (WidgetTester tester) async {
-    when(mockNotifier.watchlistState).thenReturn(RequestState.loaded);
-    when(mockNotifier.watchlistTv).thenReturn(<Tv>[testTv]);
+    when(() => mockTvWatchlistBloc.state).thenReturn(TvHasData(testTvList));
 
     final tvCardFinder = find.byType(TvCard);
 
@@ -68,8 +65,7 @@ void main() {
 
   testWidgets('Page should display text with message when Error',
       (WidgetTester tester) async {
-    when(mockNotifier.watchlistState).thenReturn(RequestState.error);
-    when(mockNotifier.message).thenReturn('Error message');
+    when(() => mockTvWatchlistBloc.state).thenReturn(const TvError('Error'));
 
     final textFinder = find.byKey(const Key('error_message'));
 
