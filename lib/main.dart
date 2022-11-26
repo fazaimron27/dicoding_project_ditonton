@@ -24,11 +24,11 @@ import 'package:ditonton/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
-  di.init();
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await di.init();
   runApp(MyApp());
 }
 
