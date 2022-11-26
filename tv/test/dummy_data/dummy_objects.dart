@@ -25,6 +25,8 @@ final testTv = Tv(
 
 final testTvList = [testTv];
 
+const tId = 1;
+
 const testTvDetail = TvDetail(
   backdropPath: '/etj8E2o0Bud0HkONVQPjyCkIvpv.jpg',
   episodeRunTime: [60],
@@ -57,6 +59,8 @@ const testTvDetail = TvDetail(
   voteAverage: 8.506,
   voteCount: 2338,
 );
+
+const tSeasonNumber = 1;
 
 const testTvSeasonDetail = TvSeasonDetail(
   id: '5db952cca1d3320014e91171',
