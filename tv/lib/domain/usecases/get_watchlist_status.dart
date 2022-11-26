@@ -1,9 +1,9 @@
 import '../repositories/tv_repository.dart';
 
-class GetWatchListStatus {
+class GetWatchlistStatus {
   final TvRepository repository;
 
-  GetWatchListStatus(this.repository);
+  GetWatchlistStatus(this.repository);
 
   Future<bool> execute(int id) async {
     return repository.isAddedToWatchlist(id);
