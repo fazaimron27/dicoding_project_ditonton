@@ -1,8 +1,7 @@
-import '../provider/tv_season_detail_notifier.dart';
 import '../widgets/tv_episode_card_list.dart';
-import 'package:core/utils/state_enum.dart';
+import '../bloc/tv_bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class TvSeasonDetailPage extends StatefulWidget {
   static const routeName = '/detail-tv-season';
@@ -18,23 +17,23 @@ class _TvSeasonDetailPageState extends State<TvSeasonDetailPage> {
   @override
   void initState() {
     super.initState();
-    Future.microtask(() {
-      Provider.of<TvSeasonDetailNotifier>(context, listen: false)
-          .fetchTvSeasonDetail(widget.args['id'], widget.args['seasonNumber']);
-    });
+    Future.microtask(
+      () => context.read<TvSeasonDetailBloc>().add(
+          OnTvSeasonDetail(widget.args['id'], widget.args['seasonNumber'])),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Consumer<TvSeasonDetailNotifier>(
-        builder: (context, provider, child) {
-          if (provider.tvSeasonState == RequestState.loading) {
+      body: BlocBuilder<TvSeasonDetailBloc, TvState>(
+        builder: (context, state) {
+          if (state is TvLoading) {
             return const Center(
               child: CircularProgressIndicator(),
             );
-          } else if (provider.tvSeasonState == RequestState.loaded) {
-            final tvSeason = provider.tvSeason;
+          } else if (state is TvSeasonDetailHasData) {
+            final tvSeason = state.result;
             return Scaffold(
               appBar: AppBar(
                 title: Text(tvSeason.name),
@@ -50,11 +49,13 @@ class _TvSeasonDetailPageState extends State<TvSeasonDetailPage> {
                 ),
               ),
             );
-          } else {
+          } else if (state is TvError) {
             return Center(
               key: const Key('error_message'),
-              child: Text(provider.message),
+              child: Text(state.message),
             );
+          } else {
+            return const Text('Something went wrong');
           }
         },
       ),
