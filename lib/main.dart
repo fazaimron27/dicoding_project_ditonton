@@ -28,7 +28,8 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  await di.init();
+  await SSLPinning.init();
+  di.init();
   runApp(MyApp());
 }
 

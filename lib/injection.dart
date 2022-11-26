@@ -27,15 +27,12 @@ import 'package:movie/movie.dart';
 /// TV Show Module
 import 'package:tv/tv.dart';
 
-import 'package:http/io_client.dart';
+// import 'package:http/io_client.dart';
 import 'package:get_it/get_it.dart';
 
 final locator = GetIt.instance;
 
-Future<void> init() async {
-  // SSL Pinning
-  IOClient ioClient = await SSLPinning.ioClient;
-
+void init() async {
   /// Search Bloc
   locator.registerFactory(
     () => SearchMovieBloc(
@@ -185,5 +182,5 @@ Future<void> init() async {
   locator.registerLazySingleton<DatabaseHelper>(() => DatabaseHelper());
 
   /// external
-  locator.registerLazySingleton(() => ioClient);
+  locator.registerLazySingleton(() => SSLPinning.client);
 }
