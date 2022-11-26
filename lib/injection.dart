@@ -1,6 +1,6 @@
 /// Datasource Injection
 /// Database Injection
-import 'package:core/data/datasources/db/database_helper.dart';
+import 'package:core/core.dart';
 
 /// Use Case Injection
 /// Movie
@@ -27,12 +27,15 @@ import 'package:movie/movie.dart';
 /// TV Show Module
 import 'package:tv/tv.dart';
 
-import 'package:http/http.dart' as http;
+import 'package:http/io_client.dart';
 import 'package:get_it/get_it.dart';
 
 final locator = GetIt.instance;
 
-void init() {
+Future<void> init() async {
+  // SSL Pinning
+  IOClient ioClient = await SSLPinning.ioClient;
+
   /// Search Bloc
   locator.registerFactory(
     () => SearchMovieBloc(
@@ -46,11 +49,7 @@ void init() {
   );
 
   /// Movie Bloc
-  locator.registerFactory(
-    () => NowPlayingMoviesBloc(
-      locator(),
-    ),
-  );
+  locator.registerFactory(() => NowPlayingMoviesBloc(locator()));
   locator.registerFactory(
     () => PopularMoviesBloc(
       locator(),
@@ -186,5 +185,5 @@ void init() {
   locator.registerLazySingleton<DatabaseHelper>(() => DatabaseHelper());
 
   /// external
-  locator.registerLazySingleton(() => http.Client());
+  locator.registerLazySingleton(() => ioClient);
 }
