@@ -19,7 +19,8 @@ class _WatchlistMoviesPageState extends State<WatchlistMoviesPage>
   void initState() {
     super.initState();
     Future.microtask(
-        () => context.read<MovieWatchlistBloc>().add(OnWatchlistMovies()));
+      () => context.read<MovieWatchlistBloc>().add(OnWatchlistMovies()),
+    );
   }
 
   @override
