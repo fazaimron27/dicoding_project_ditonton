@@ -26,6 +26,15 @@ void main() {
     searchTvBloc = SearchTvBloc(mockSearchTv);
   });
 
+  group('search event', () {
+    testWidgets('on query changed event', (tester) async {
+      expect(
+        const OnQueryChanged('spiderman') != const OnQueryChanged('avengers'),
+        true,
+      );
+    });
+  });
+
   group('search movies', () {
     test('initial state should be empty', () {
       expect(searchMovieBloc.state, SearchEmpty());
