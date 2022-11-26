@@ -40,17 +40,17 @@ void main() {
     expect(progressBarFinder, findsOneWidget);
   });
 
-  // testWidgets('Page should display ListView when data is loaded',
-  //     (WidgetTester tester) async {
-  //   when(mockNotifier.watchlistState).thenReturn(RequestState.loaded);
-  //   when(mockNotifier.watchlistTv).thenReturn(<Tv>[]);
+  testWidgets('Page should display ListView when data is loaded',
+      (WidgetTester tester) async {
+    when(() => mockTvWatchlistBloc.state).thenReturn(TvLoading());
+    when(() => mockTvWatchlistBloc.state).thenReturn(TvHasData(testTvList));
 
-  //   final listViewFinder = find.byType(ListView);
+    final listViewFinder = find.byType(ListView);
 
-  //   await tester.pumpWidget(_makeTestableWidget(const WatchlistTvPage()));
+    await tester.pumpWidget(_makeTestableWidget(const WatchlistTvPage()));
 
-  //   expect(listViewFinder, findsOneWidget);
-  // });
+    expect(listViewFinder, findsOneWidget);
+  });
 
   testWidgets('Page should display TvCard when data is loaded',
       (WidgetTester tester) async {

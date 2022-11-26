@@ -40,17 +40,18 @@ void main() {
     expect(progressBarFinder, findsOneWidget);
   });
 
-  // testWidgets('Page should display ListView when data is loaded',
-  //     (WidgetTester tester) async {
-  //   when(mockNotifier.watchlistState).thenReturn(RequestState.loaded);
-  //   when(mockNotifier.watchlistMovies).thenReturn(<Movie>[]);
+  testWidgets('Page should display ListView when data is loaded',
+      (WidgetTester tester) async {
+    when(() => mockMovieWatchlistBloc.state).thenReturn(MovieLoading());
+    when(() => mockMovieWatchlistBloc.state)
+        .thenReturn(MovieHasData(testMovieList));
 
-  //   final listViewFinder = find.byType(ListView);
+    final listViewFinder = find.byType(ListView);
 
-  //   await tester.pumpWidget(_makeTestableWidget(const WatchlistMoviesPage()));
+    await tester.pumpWidget(_makeTestableWidget(const WatchlistMoviesPage()));
 
-  //   expect(listViewFinder, findsOneWidget);
-  // });
+    expect(listViewFinder, findsOneWidget);
+  });
 
   testWidgets('Page should display MovieCard when data is loaded',
       (WidgetTester tester) async {
